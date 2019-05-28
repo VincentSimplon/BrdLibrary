@@ -1,0 +1,30 @@
+
+<h2>Liste des films</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Cover</th>
+    <th>Director</th>
+    <th>Edition</th>
+    <th>Editor</th>
+    <th>FrenchTitle</th>
+    <th>Media</th>
+    <th>OriginalTitle</th>
+    <th>Year</th>
+    <th>Gencode</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let movie of movieList">
+    <td><img src="{{movie.cover}}"></td>
+    <td>{{movie.director}}</td>
+    <td>{{movie.edition}}</td>
+    <td>{{movie.editor}}</td>
+    <td>{{movie.frenchTitle}}</td>
+    <td>{{movie.media}}</td>
+    <td>{{movie.originalTitle}}</td>
+    <td>{{movie.year}}</td>
+    <td>{{movie.gencode}}</td>
+  </tr>
+  </tbody>
+</table>

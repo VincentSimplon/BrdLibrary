@@ -1,0 +1,50 @@
+
+<div class="container-fluid">
+  <form>
+      <div class="form-group">
+        <label for="username">User Name<br></label>
+        <input type="text" class="form-control" id="username" [(ngModel)]="newUser.username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email<br></label>
+        <input type="text" class="form-control" id="email" [(ngModel)]="newUser.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password<br></label>
+        <input type="password" class="form-control" id="password" [(ngModel)]="newUser.password" name="password" required>
+      </div>
+      <div class="form-group">
+          <label for="profilePicture">Profile Picture<br></label>
+          <input type="text" class="form-control" id="profilePicture" [(ngModel)]="newUser.profilePicture" name="profilePicture" required>
+        </div>
+      <div class="form-group">
+        <label for="firstName">First Name<br></label>
+        <input type="text" class="form-control" id="firstName" [(ngModel)]="newUser.firstName" name="firstName" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name<br></label>
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="newUser.lastName" name="lastName" required>
+      </div>
+      <div class="form-group">
+        <label for="addressLine1">Address Line 1<br></label>
+        <input type="text" class="form-control" id="addressLine1" [(ngModel)]="newUser.addressLine1" name="addressLine1" required>
+      </div>
+      <div class="form-group">
+        <label for="addressLine2">Address Line 2<br></label>
+        <input type="text" class="form-control" id="addressLine2" [(ngModel)]="newUser.addressLine2" name="addressLine2" required>
+      </div>
+      <div class="form-group">
+        <label for="zipCode">Zip Code<br></label>
+        <input type="text" class="form-control" id="zipCode" [(ngModel)]="newUser.zipCode" name="zipCode" required>
+      </div>
+      <div class="form-group">
+        <label for="city">City<br></label>
+        <input type="text" class="form-control" id="city" [(ngModel)]="newUser.city" name="city" required>
+      </div>
+      <div class="form-group">
+        <label for="country">Country<br></label>
+        <input type="text" class="form-control" id="country" [(ngModel)]="newUser.country" name="country" required>
+      </div>
+      <button type="button" (click)="addUser()">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:bold' rel='stylesheet' type='text/css'>
+<header>
+  
+  <mat-drawer-container class="example-container">
+    <mat-drawer #sideNav mode="side" opened="false" [position]="nav_position">
+    <app-profil></app-profil>
+    <button class="logout" *ngIf="isUser || isAdmin"
+      type="button"
+      (click)="logOut()">logOut</button>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class=home routerLink="">BRD<br>LIBRARY</div>
+      <img src="./assets/burgerButton.png"(click)="sideNav.toggle()" class="burger-button">
+      <button 
+        type="button"
+        routerLink="add-user">Signup</button>
+      <button
+        type="button"
+        routerLink="login">LogIn</button>
+        <button *ngIf="isUser || isAdmin"
+        type="button"
+        routerLink="movie-list">Movie List</button>
+        
+    </mat-drawer-content>
+  </mat-drawer-container>
+  
+</header>
+
+  
+<main>
+  <router-outlet></router-outlet>
+</main>
+

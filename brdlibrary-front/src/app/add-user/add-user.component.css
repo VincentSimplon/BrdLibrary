@@ -1,0 +1,28 @@
+input {
+    background-color: #3aafa9;
+    color: black;
+    width: 500px;
+    height: 30px;
+    border-color: #3aafa9;
+    
+}
+
+label {
+    color: black;
+    font-size: 20px;
+  	margin: 0;
+    text-shadow: black 0.3px 0.3px, black -0.3px 0.3px, black -0.3px -0.3px, black 0.3px -0.3px;
+    letter-spacing: 0,001rem;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+}
+
+button {
+    background-color: white; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

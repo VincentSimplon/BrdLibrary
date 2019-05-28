@@ -1,0 +1,66 @@
+
+
+  mat-drawer {
+      background-color: black;
+      width: 30%;
+      position: fixed;
+      
+  }
+
+  mat-drawer-content {
+    overflow: hidden;
+    background-color: #3aafa9;
+  }
+  
+  
+
+  .burger-button {
+      float: right;
+      margin-right: 20px;
+      margin-top: 0px;
+      width: 30px;
+      height: 30px;
+  }
+
+  .home {
+    color: #ffffff;
+    font-size: 20px;
+  	margin: 0;
+    text-shadow: #ffffff 0.3px 0.3px, #ffffff -0.3px 0.3px, #ffffff -0.3px -0.3px, #ffffff 0.3px -0.3px;
+    letter-spacing: 0,001rem;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+    line-height: 14px;
+    margin-left: 20px;
+    float: left;
+  }
+
+  button {
+    float: right;
+    border-radius: 25px;
+    border: 1px solid #fff;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    margin-top: 3px;
+    margin-right: 20px;
+    transition: all .3s ease;
+    background-color: black;
+    color: #ffffff;
+    width:130px;
+    height: 25px;
+  }
+
+main {
+  text-align: center;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+}
+
+.logout {
+  margin-right: 50%;
+  transform: translateX(50%)
+}
+
+
+
