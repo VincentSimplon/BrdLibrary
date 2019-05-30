@@ -48,5 +48,18 @@ public class Library implements Serializable {
 			}
 		)
 	private List<Movie> movies;
+
+	public Library() {
+		super();
+	}
+
+	public Library(String name, AppUser appUser, List<Movie> movies) {
+		super();
+		this.name = name;
+		this.appUser = appUser;
+		this.movies = movies;
+	}
+	
+	
 	
 }

@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AddLibraryComponent } from './add-library/add-library.component'
 
 const routes: Routes = [
   { path: 'movie-list', component: MovieListComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'user-list', component: UserListComponent },
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent }
+  { path: 'logout', component: LogoutComponent },
+  { path: 'add-library', component: AddLibraryComponent }
 ];
 
 @NgModule({

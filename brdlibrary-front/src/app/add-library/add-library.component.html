@@ -1,0 +1,11 @@
+
+<div class="container-fluid">
+  <form>
+      <div class="form-group">
+        <label for="name">Name<br></label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="newLibrary.name" name="name" required>
+      </div>
+      
+      <button type="button" (click)="addLibrary()">Submit</button>
+  </form>
+</div>

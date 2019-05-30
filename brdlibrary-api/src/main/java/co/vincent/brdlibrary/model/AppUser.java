@@ -1,7 +1,6 @@
 package co.vincent.brdlibrary.model;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -15,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
@@ -63,6 +63,8 @@ public class AppUser {
     @ManyToMany
 	@JoinTable(name="user_movie", joinColumns= @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="movie_id"))
     private List<Movie> movies;
+    @OneToMany(mappedBy = "appUser")
+	private List<Library> libraries;
 
     
     public AppUser(String username, String password, List<Role> roleList) {

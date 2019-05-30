@@ -59,6 +59,7 @@ public class JwtTokenProvider {
 
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority())).filter(Objects::nonNull).collect(Collectors.toList()));
+        claims.put("username", username);
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);

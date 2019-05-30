@@ -53,6 +53,7 @@ import { JwtInterceptor } from './http-interceptor/jwt.interceptor';
 import { AdminGuard } from './guards/admin.guard';
 import { UserGuard } from './guards/user.guard';
 import { ProfilComponent } from './profil/profil.component';
+import { AddLibraryComponent } from './add-library/add-library.component';
 
 
 
@@ -67,7 +68,8 @@ import { ProfilComponent } from './profil/profil.component';
     HomeComponent,
     LoginComponent,
     LogoutComponent,
-    ProfilComponent
+    ProfilComponent,
+    AddLibraryComponent
   ],
   imports: [
     BrowserModule,

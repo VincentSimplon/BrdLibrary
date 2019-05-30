@@ -11,7 +11,7 @@ public interface LibraryService {
 	
 	List<Library> findAllLibraries();
 	
-	Library addLibrary(Library newLibrary);
+	Library addLibrary(Library newLibrary, String username);
 	
 	void deleteLibraryById(long libraryId);
 

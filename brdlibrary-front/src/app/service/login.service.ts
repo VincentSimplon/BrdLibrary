@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { JsonWebToken } from '../model/jwt.model';
 import * as jwt_decode from 'jwt-decode'
+import { tokenName } from '@angular/compiler';
 
 
 
@@ -38,7 +39,7 @@ import * as jwt_decode from 'jwt-decode'
       this.httpClient.post<JsonWebToken>(environment.apiUrl + 'login', user).subscribe(
         token => {
           sessionStorage.setItem(environment.accessToken, token.token);
-          console.log(user);
+          console.log("Julien : " + token.token)
           this.setUsernameSubject(user.username);
           this.getUserRoles();
           this.router.navigate(['']);
@@ -55,6 +56,9 @@ import * as jwt_decode from 'jwt-decode'
           const decodedToken: any = jwt_decode(sessionStorage.getItem(environment.accessToken));
           const authorities: Array<any> = decodedToken.auth;
           this.userRoles.next(authorities.map(authority => authority.authority));
+          const username: String = decodedToken.username;
+          console.log("decodedtoken = " + decodedToken);
+          console.log("username = " + username)
         }
     }
 

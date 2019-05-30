@@ -3,10 +3,9 @@ import { Movie } from './movie.model';
 
 export class Library {
 
-    constructor(private libraryId: number,
-                private name: string,
+    constructor(private name: string,
                 private user: User,
-                private movies: Movie
+                private movies: Movie[]
                 ) {
 
                 }
