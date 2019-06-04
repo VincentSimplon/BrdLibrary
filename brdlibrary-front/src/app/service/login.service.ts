@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { User } from '../model/user.model';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
@@ -15,13 +15,20 @@ import { tokenName } from '@angular/compiler';
     providedIn: 'root'
   })
   export class LoginService {
-  
-    userRoles: BehaviorSubject<string[]> = new BehaviorSubject([]);
 
+    
+    userRoles: BehaviorSubject<string[]> = new BehaviorSubject([]);
+    
+    
     constructor(private httpClient: HttpClient, private router: Router) {
+
       this.getUserRoles();
+      this.getUsername();
+      
       
     }
+
+    
 
     public usernameSubject: BehaviorSubject<string> = new BehaviorSubject(null);  
     public setUsernameSubject(value: string){     
@@ -39,16 +46,34 @@ import { tokenName } from '@angular/compiler';
       this.httpClient.post<JsonWebToken>(environment.apiUrl + 'login', user).subscribe(
         token => {
           sessionStorage.setItem(environment.accessToken, token.token);
+          const decodedToken: any = jwt_decode(sessionStorage.getItem(environment.accessToken));
+          const username = decodedToken.username;
           console.log("Julien : " + token.token)
-          this.setUsernameSubject(user.username);
+          this.setUsernameSubject(username);
           this.getUserRoles();
           this.router.navigate(['']);
         },
         error => console.log('Error while login'));
     }
+
+    getUsername() {
+
+      if (sessionStorage.getItem(environment.accessToken)) {
+        const decodedToken: any = jwt_decode(sessionStorage.getItem(environment.accessToken));
+        const username = decodedToken.username;
+        this.setUsernameSubject(username);
+        return username;
+      }
+    }
+        
+
+    
   
     logOut() {
+      
       sessionStorage.removeItem(environment.accessToken);
+      this.usernameSubject.next(null);
+      this.router.navigate(['/logout']);
     }
   
     private getUserRoles() {
@@ -56,18 +81,22 @@ import { tokenName } from '@angular/compiler';
           const decodedToken: any = jwt_decode(sessionStorage.getItem(environment.accessToken));
           const authorities: Array<any> = decodedToken.auth;
           this.userRoles.next(authorities.map(authority => authority.authority));
-          const username: String = decodedToken.username;
-          console.log("decodedtoken = " + decodedToken);
-          console.log("username = " + username)
+          
+
         }
     }
+    
+  
 
    
-
-    getUser(username: String) {
-      return this.httpClient.get<User>(environment.apiUrl + 'profil/' + username).subscribe(
-        res => console.log(res)
-      )
-  }
-  }
+    
+    getUserByUsername(username: String): Observable<User> {
+      
+      return this.httpClient.get<User>(environment.apiUrl + 'profil/' + username);
+      
+      
+        
   
+}
+  
+  }

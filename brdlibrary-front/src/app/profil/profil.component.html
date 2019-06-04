@@ -2,8 +2,14 @@
 
 <table>
   <tbody>
-  <tr>
-    <td *ngIf="user !== undefined && user !== null"><img class="roundedImage" src="{{user.profilePicture}}"></td>
-  </tr>
+  
+    <div *ngIf="user !== undefined && user !== null"><img class="roundedImage" src="{{user.profilePicture}}"></div>
+    <div *ngIf="user !== undefined && user !== null">
+    <button 
+        type="button"
+        routerLink="add-library">Add Library</button>
+    </div>
+
+  
   </tbody>
 </table>

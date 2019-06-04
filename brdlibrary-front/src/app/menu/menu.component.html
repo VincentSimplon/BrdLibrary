@@ -3,16 +3,24 @@
   
   <mat-drawer-container class="example-container">
     <mat-drawer #sideNav mode="side" opened="false" [position]="nav_position">
-    <app-profil></app-profil>
-    <button class="logout" *ngIf="isUser || isAdmin"
-      type="button"
-      (click)="logOut()">logOut</button>
+      <div *ngIf="isUser || isAdmin">
+      <img class="roundedImage" src="{{user?.profilePicture}}">
+  <ul>
+      <li><a class="addlibrary"
+             routerLink="add-library">Add Library</a></li>
+      
+    <li><a class="logout"
+      
+      (click)="logOut()">logOut</a></li>
+      </ul>
+      </div>
+    
     </mat-drawer>
     <mat-drawer-content>
       <div class=home routerLink="">BRD<br>LIBRARY</div>
       <img src="./assets/burgerButton.png"(click)="sideNav.toggle()" class="burger-button">
       <button 
-        type="button"
+        type="submit"
         routerLink="add-user">Signup</button>
       <button
         type="button"

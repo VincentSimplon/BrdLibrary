@@ -57,10 +57,55 @@ main {
   transform: translateY(-50%);
 }
 
-.logout {
-  margin-right: 50%;
-  transform: translateX(50%)
+.logout, .addlibrary {
+  
 }
 
 
 
+.roundedImage{
+  overflow:hidden;
+  -webkit-border-radius:150px;
+  -moz-border-radius:150px;
+  border-radius:150px;
+  width:200px;
+  height:200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  background-color: black;
+  border: 1px solid #555;
+}
+
+li {
+  text-align: center;
+  border-bottom: 1px solid #555;
+  
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li a {
+  display: block;
+  color:white;
+  padding: 8px 16px;
+  text-decoration: none;
+  
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #3AAFA9;
+  color: white;
+  
+  
+  
+}

@@ -101,7 +101,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/brdlibrary/movies").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/brdlibrary/addUser").permitAll()
                 .antMatchers("/brdlibrary/users").permitAll()
-                .antMatchers("/brdlibrary/profil").permitAll()
+                .antMatchers("/brdlibrary/profil/**").permitAll()
                 
                 // Disallow everything else...
                 .anyRequest().authenticated();

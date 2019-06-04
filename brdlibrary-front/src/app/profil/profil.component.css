@@ -17,3 +17,20 @@ table {
   
     
 }
+
+button {
+  float: right;
+  border-radius: 25px;
+  border: 1px solid #fff;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  margin-top: 3px;
+  margin-right: 20px;
+  transition: all .3s ease;
+  background-color: black;
+  color: #ffffff;
+  width:130px;
+  height: 25px;
+}

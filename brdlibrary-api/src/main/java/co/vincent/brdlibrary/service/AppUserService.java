@@ -18,7 +18,7 @@ public interface AppUserService {
     
     public String addUser(AppUser appUser) throws ExistingUsernameException;
 
-	Optional<AppUser> findByUsername(String username);
+    Optional<AppUser> findByUsername(String username);
 
 	AppUser findByUsername1(String username);
 	

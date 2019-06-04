@@ -56,13 +56,13 @@ public class AppUserController {
 	@GetMapping("/profil/{username}")
 	public Optional<AppUser> findByUsername(@PathVariable String username) {
 		return appUserService.findByUsername(username);
-		
 	}
 	
-	@GetMapping("addLibrary/{username}")
-	public Optional<AppUser> findByUsername2(@PathVariable String username) {
-		return appUserService.findByUsername(username);
-	}
+	
+//	@GetMapping("addLibrary/{username}")
+//	public Optional<AppUser> findByUsername2(@PathVariable String username) {
+//		return appUserService.findByUsername(username);
+//	}
 	
 
 }
