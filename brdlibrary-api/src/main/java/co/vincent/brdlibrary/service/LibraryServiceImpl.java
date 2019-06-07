@@ -1,6 +1,7 @@
 package co.vincent.brdlibrary.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,16 @@ public class LibraryServiceImpl implements LibraryService {
 	@Override
 	public void deleteLibraryById(long libraryId) {
 		libraryRepository.deleteById(libraryId);
+	}
+	
+	public List<Library> findLibraryByUsername(String username) {
+		return libraryRepository.findLibraryByUsername(username);
+	}
+	
+	@Override
+	public Library findLibraryById(long libraryId) {
+		return libraryRepository.getOne(libraryId);
+		
 	}
 	
 }

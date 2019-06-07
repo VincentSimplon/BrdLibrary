@@ -3,10 +3,12 @@ package co.vincent.brdlibrary.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,6 +58,13 @@ public class AppUserController {
 	@GetMapping("/profil/{username}")
 	public Optional<AppUser> findByUsername(@PathVariable String username) {
 		return appUserService.findByUsername(username);
+	}
+	
+	@PutMapping("/profil/update")
+	public ResponseEntity<AppUser> updateUser(@RequestBody AppUser appUser) {
+		System.out.println("OK = " + appUser);
+		return ResponseEntity.status(HttpStatus.OK).body(appUserService.updateUser(appUser));
+		
 	}
 	
 	

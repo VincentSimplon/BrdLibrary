@@ -1,6 +1,7 @@
 package co.vincent.brdlibrary.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -14,5 +15,9 @@ public interface LibraryService {
 	Library addLibrary(Library newLibrary, String username);
 	
 	void deleteLibraryById(long libraryId);
+	
+	List<Library> findLibraryByUsername(String username);
+	
+	Library findLibraryById(long libraryId);
 
 }

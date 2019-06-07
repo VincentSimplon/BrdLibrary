@@ -6,6 +6,11 @@
       <div *ngIf="isUser || isAdmin">
       <img class="roundedImage" src="{{user?.profilePicture}}">
   <ul>
+      <li><a class = "profil"
+            routerLink="profil">Your profile</a></li>
+            <li><a class = "libraries-list"
+              routerLink="libraries-list">Your Libraries</a></li>
+
       <li><a class="addlibrary"
              routerLink="add-library">Add Library</a></li>
       
@@ -18,16 +23,17 @@
     </mat-drawer>
     <mat-drawer-content>
       <div class=home routerLink="">BRD<br>LIBRARY</div>
-      <img src="./assets/burgerButton.png"(click)="sideNav.toggle()" class="burger-button">
+      <img src="./assets/burgerButton.png"(click)="sideNav.toggle()" *ngIf="isUser || isAdmin" class="burger-button">
       <button 
         type="submit"
         routerLink="add-user">Signup</button>
       <button
+        
         type="button"
         routerLink="login">LogIn</button>
-        <button *ngIf="isUser || isAdmin"
+        <!-- <button *ngIf="isUser || isAdmin"
         type="button"
-        routerLink="movie-list">Movie List</button>
+        routerLink="movie-list">Movie List</button> -->
         
     </mat-drawer-content>
   </mat-drawer-container>

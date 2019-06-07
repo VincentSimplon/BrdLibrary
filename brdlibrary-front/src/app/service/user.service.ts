@@ -32,7 +32,9 @@ import { environment } from '../../environments/environment';
     }
 
     
-        
+    UpdateUser(user: User) {
+        return this.httpClient.put<User>(environment.apiUrl + 'profil/update', user);
+    }
 
         
     }

@@ -1,0 +1,11 @@
+
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+          <label for="gencode">Gencode<br></label>
+          <input type="text" class="form-control" id="gencode" [(ngModel)]="newMovie.gencode" name="gencode" required>
+        </div>
+        
+        <button type="button" (click)="addMovieByGencode()">Submit</button>
+    </form>
+  </div>

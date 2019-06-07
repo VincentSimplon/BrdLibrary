@@ -57,7 +57,14 @@ main {
   transform: translateY(-50%);
 }
 
-.logout, .addlibrary {
+.logout, .addlibrary, .profil, .libraries-list {
+  color: #ffffff;
+  font-size: 20px;
+  
+  text-shadow: #ffffff 0.3px 0.3px, #ffffff -0.3px 0.3px, #ffffff -0.3px -0.3px, #ffffff 0.3px -0.3px;
+  
+  font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+ 
   
 }
 
@@ -80,7 +87,8 @@ ul {
   padding: 0;
   width: 100%;
   background-color: black;
-  border: 1px solid #555;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
 }
 
 li {

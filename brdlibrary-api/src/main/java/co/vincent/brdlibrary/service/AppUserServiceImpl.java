@@ -11,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import co.vincent.brdlibrary.exception.ExistingUsernameException;
 import co.vincent.brdlibrary.exception.InvalidCredentialsException;
@@ -89,6 +90,13 @@ public class AppUserServiceImpl implements AppUserService {
 	public AppUser findByUsername1(String username) {
 		// TODO Auto-generated method stub
 		return appUserRepository.findByUsername1(username);
+	}
+	
+	@Override
+	public AppUser updateUser(@RequestBody AppUser appUser) {
+		return appUserRepository.save(appUser);
+		
+		
 	}
 	
 }

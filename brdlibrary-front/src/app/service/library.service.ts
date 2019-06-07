@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Library } from '../model/library.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -24,5 +25,9 @@ import { environment } from 'src/environments/environment';
             }
         )
             }
+
+    getOneLibrary(username: String): Observable<Library[]> {
+        return this.httpClient.get<Library[]>(environment.apiUrl + 'libraries/user/' + username);
+    }
 
   }

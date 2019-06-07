@@ -54,6 +54,9 @@ import { AdminGuard } from './guards/admin.guard';
 import { UserGuard } from './guards/user.guard';
 import { ProfilComponent } from './profil/profil.component';
 import { AddLibraryComponent } from './add-library/add-library.component';
+import { LibrariesListComponent } from './libraries-list/libraries-list.component';
+import { AddMovieComponent } from './add-movie/add-movie.component';
+import { LibraryDetailComponent } from './library-detail/library-detail.component';
 
 
 
@@ -69,7 +72,10 @@ import { AddLibraryComponent } from './add-library/add-library.component';
     LoginComponent,
     LogoutComponent,
     ProfilComponent,
-    AddLibraryComponent
+    AddLibraryComponent,
+    LibrariesListComponent,
+    AddMovieComponent,
+    LibraryDetailComponent
   ],
   imports: [
     BrowserModule,

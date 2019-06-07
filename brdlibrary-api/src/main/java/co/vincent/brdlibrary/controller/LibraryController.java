@@ -28,6 +28,16 @@ public class LibraryController {
 		return libraryService.findAllLibraries();
 	}
 	
+	@GetMapping("/libraries/user/{username}")
+	public List<Library> findLibraryByUsername(@PathVariable("username") String username) {
+		return libraryService.findLibraryByUsername(username);
+	}
+	
+	@GetMapping("/libraries/{libraryId}")
+	public Library findLibraryById(@PathVariable("libraryId") long libraryId) {
+		return libraryService.findLibraryById(libraryId);
+	}
+	
 	@PostMapping("/addLibrary/{username}")
 	public Library addLibrary(@RequestBody Library newLibrary, @PathVariable String username) {
 		return libraryService.addLibrary(newLibrary, username);

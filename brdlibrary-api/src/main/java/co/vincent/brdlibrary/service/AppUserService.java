@@ -22,5 +22,7 @@ public interface AppUserService {
 
 	AppUser findByUsername1(String username);
 	
+	public AppUser updateUser(AppUser appUser);
+	
 	
 }
