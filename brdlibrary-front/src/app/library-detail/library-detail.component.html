@@ -1,3 +1,18 @@
-<p>
-  library-detail works!
-</p>
+<!-- 
+<form>
+  <div class="form-control">
+    <label for="name">name</label>
+    <input type="text" id="name" [(ngModel)]="library.name" name="name" required>
+  </div>
+  <button routerLink="/add-movie">AddMovie</button>
+</form> -->
+
+<h1>Edition de Library</h1>
+<form>
+  <div class="form-control">
+    <label for="name">Name :</label>
+    <input type="text" id="name" [(ngModel)]="librarys.name" name="name" required>
+  </div>
+  
+  <button routerLink="/add-movie/{{librarys.libraryId}}">AddMovie</button>
+</form>

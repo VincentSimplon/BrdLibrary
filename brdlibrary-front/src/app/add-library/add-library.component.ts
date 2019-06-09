@@ -30,7 +30,7 @@ export class AddLibraryComponent implements OnInit {
     // const username = decodedToken.username;
     
     
-    this.newLibrary = new Library("", this.getUsername(), this.movies);
+    this.newLibrary = new Library(null, "", this.getUsername(), this.movies);
 
   }
 

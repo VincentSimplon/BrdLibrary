@@ -14,19 +14,25 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import co.vincent.brdlibrary.model.Library;
 import co.vincent.brdlibrary.model.Movie;
 import co.vincent.brdlibrary.repository.MovieRepository;
 
 @Service
 public class MovieServiceImpl implements MovieService {
 	
+	@Autowired
 	private MovieRepository movieRepository;
+	
+	@Autowired
+	private LibraryService libraryService;
 	
 	public MovieServiceImpl(MovieRepository movieRepository) {
 		this.movieRepository = movieRepository;
@@ -39,14 +45,32 @@ public class MovieServiceImpl implements MovieService {
 	
 	
 	@Override
-    public Movie addMovie(Movie newMovie) {
-        return movieRepository.save(newMovie);
+    public Movie addMovie(Movie newMovie, long libraryId) {
+		
+		Movie movieToSave = null;
+		String cover = newMovie.getCover();
+		String director = newMovie.getDirector();
+		String edition = newMovie.getEdition();
+		String editor = newMovie.getEditor();
+		String frenchTitle = newMovie.getFrenchTitle();
+		String media = newMovie.getMedia();
+		String originalTitle = newMovie.getOriginalTitle();
+		String year = newMovie.getYear();
+		String gencode = newMovie.getGencode();
+		Library library = this.libraryService.findLibraryById(libraryId);
+		
+		movieToSave = new Movie(cover, director, edition, editor, frenchTitle, media,
+				originalTitle, year, gencode, library);
+		
+		
+        return movieRepository.save(movieToSave);
     }
 	
 	@Override
-	public Movie addMovieByGencode(String gencode) throws IOException, ParserConfigurationException, SAXException, TransformerException {
+	public Movie addMovieByGencode(String gencode, long libraryId) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 		
 		
+		Library library = this.libraryService.findLibraryById(libraryId);
 		URL url = new URL("https://www.dvdfr.com/api/search.php?gencode=" + gencode);
 		URLConnection conn = url.openConnection();
 
@@ -71,6 +95,7 @@ public class MovieServiceImpl implements MovieService {
 		NodeList titlesvf = racine.getElementsByTagName("fr");
 		NodeList titlesvo = racine.getElementsByTagName("vo");
 		NodeList years = racine.getElementsByTagName("annee");
+		
 
 		System.out.println("Vincent : repère");
 		
@@ -83,6 +108,10 @@ public class MovieServiceImpl implements MovieService {
 		Element titlevo2 = (Element) titlesvo.item(0);
 		Element year2 = (Element) years.item(0);
 		
+		
+		
+		
+		
 		Movie newMovie = new Movie(cover2.getTextContent().toString(), 
 									director2.getTextContent().toString(), 
 									edition2.getTextContent().toString(),
@@ -91,7 +120,15 @@ public class MovieServiceImpl implements MovieService {
 								   media2.getTextContent().toString(),
 								   titlevo2.getTextContent().toString(), 
 								   year2.getTextContent().toString(),
-								   gencode);
+								   gencode, library
+								   
+								   
+								   );
+		
+		
+		
+		
+		System.out.println("LE NOUVEAU FILM EST : " + newMovie.getLibrary());
 									
 		movieRepository.save(newMovie);
 		

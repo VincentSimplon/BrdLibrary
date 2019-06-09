@@ -12,6 +12,7 @@ import { Library } from '../model/library.model';
 export class DataService {
 
     moviesList: Movie[] = [];
+    movie: Movie = new Movie;
     
 
     constructor(private httpClient: HttpClient) {
@@ -22,6 +23,20 @@ export class DataService {
         return this.httpClient.get<Movie[]>(environment.apiUrl + 'movies');
     }
 
+    addMovie(newMovie: Movie, libraryId: number) {
+        this.httpClient.post<Movie>(environment.apiUrl + 'addMovie/' + libraryId, newMovie).subscribe(newMovie => {
+            this.moviesList.push(newMovie);
+        }
+        )
+    }
+
+    addMovieByGencode(gencode: String, libraryId: number) {
+        this.httpClient.post<Movie>(environment.apiUrl + 'addMovieByGencode/' + libraryId, gencode).subscribe(newMovie => {
+            this.moviesList.push(newMovie);
+            
+        })
+    }
+}
+    
     
    
-}

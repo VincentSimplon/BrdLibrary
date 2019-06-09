@@ -7,13 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //import lombok.Data;
 //
 //@Data
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name="movie")
 @NamedQuery(name="Movie.findAll", query="SELECT m FROM Movie m")
 public class Movie implements Serializable {
@@ -34,6 +40,10 @@ public class Movie implements Serializable {
 	private String originalTitle;
 	private String year;
 	private String gencode;
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name="library_id")
+	private Library library;
 	
 	public Movie(String cover, String director, String edition, String editor, String frenchTitle, String media,
 			String originalTitle, String year, String gencode) {
@@ -49,6 +59,25 @@ public class Movie implements Serializable {
 		this.gencode = gencode;
 	}
 	
+	
+	
+	public Movie(String cover, String director, String edition, String editor, String frenchTitle, String media,
+			String originalTitle, String year, String gencode, Library library) {
+		super();
+		this.cover = cover;
+		this.director = director;
+		this.edition = edition;
+		this.editor = editor;
+		this.frenchTitle = frenchTitle;
+		this.media = media;
+		this.originalTitle = originalTitle;
+		this.year = year;
+		this.gencode = gencode;
+		this.library = library;
+	}
+
+
+
 	public Movie(String cover, String director, String edition, String editor, String frenchTitle, String media,
 			String originalTitle, String year) {
 		super();
@@ -68,6 +97,22 @@ public class Movie implements Serializable {
 	public Movie(String gencode) {
 		super();
 		this.gencode = gencode;
+	}
+	
+	
+
+
+
+	
+
+	public Library getLibrary() {
+		return library;
+	}
+
+
+
+	public void setLibrary(Library library) {
+		this.library = library;
 	}
 
 

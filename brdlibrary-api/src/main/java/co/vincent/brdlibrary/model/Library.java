@@ -1,6 +1,7 @@
 package co.vincent.brdlibrary.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,16 +10,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
 @Data
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name="library")
 @NamedQuery(name="Library.findAll", query="SELECT l FROM Library l")
 public class Library implements Serializable {
@@ -36,21 +39,15 @@ public class Library implements Serializable {
 	@JoinColumn(name="user_id")
 	private AppUser appUser;
 
-	//bi-directional many-to-many association to Movie
-	@ManyToMany
-	@JoinTable(
-		name="library_movie"
-		, joinColumns={
-			@JoinColumn(name="library_id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="movie_id")
-			}
-		)
+	@OneToMany(mappedBy = "library")
 	private List<Movie> movies;
 
 	public Library() {
 		super();
+	}
+	
+	public Library(String name) {
+		this.name = name;
 	}
 
 	public Library(String name, AppUser appUser, List<Movie> movies) {

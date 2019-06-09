@@ -8,7 +8,8 @@
   </thead>
   <tbody>
   <tr *ngFor="let library of librariesList">
-    <td>{{library.name}}</td>
+    <td routerLink="/library-detail/{{library.libraryId}}">{{library.name}}</td>
+    
   </tr>
   </tbody>
 </table>

@@ -23,8 +23,8 @@ const routes: Routes = [
   { path: 'add-library', component: AddLibraryComponent },
   { path: 'profil', component: ProfilComponent },
   { path: 'libraries-list', component: LibrariesListComponent },
-  { path: 'add-movie', component: AddMovieComponent },
-  { path: 'library-detail', component: LibraryDetailComponent }
+  { path: 'add-movie/:libraryId', component: AddMovieComponent },
+  { path: 'library-detail/:libraryId', component: LibraryDetailComponent }
 ];
 
 @NgModule({

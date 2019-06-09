@@ -2,10 +2,34 @@
 <div class="container-fluid">
     <form>
         <div class="form-group">
-          <label for="gencode">Gencode<br></label>
+            
+            <input type="text" class="form-control" id="cover" [(ngModel)]="newMovie.cover" name="cover" required>
+            <label for="cover">Cover<br></label>
+          <input type="text" class="form-control" id="director" [(ngModel)]="newMovie.director" name="director" required>
+          <label for="director">director<br></label>
+          <input type="text" class="form-control" id="edition" [(ngModel)]="newMovie.edition" name="edition" required>
+          <label for="edition">edition<br></label>
+          <input type="text" class="form-control" id="editor" [(ngModel)]="newMovie.editor" name="editor" required>
+          <label for="editor">editor<br></label>
+          <input type="text" class="form-control" id="frenchTitle" [(ngModel)]="newMovie.frenchTitle" name="frenchTitle" required>
+          <label for="frenchTitle">frenchTitle<br></label>
+          <input type="text" class="form-control" id="media" [(ngModel)]="newMovie.media" name="media" required>
+          <label for="media">media<br></label>
+          <input type="text" class="form-control" id="originalTitle" [(ngModel)]="newMovie.originalTitle" name="originalTitle" required>
+          <label for="originalTitle">originalTitle<br></label>
+          <input type="text" class="form-control" id="year" [(ngModel)]="newMovie.year" name="year" required>
+          <label for="year">year<br></label>
           <input type="text" class="form-control" id="gencode" [(ngModel)]="newMovie.gencode" name="gencode" required>
+          <label for="gencode">gencode<br></label>
         </div>
         
-        <button type="button" (click)="addMovieByGencode()">Submit</button>
+        <button type="button" (click)="addMovie()">Submit</button>
+
+        <div>
+            <input type="text" class="form-control" id="gencode" [(ngModel)]="gencode" name="gencode" required>
+            <label for="gencode">gencode<br></label>
+        </div>
+        <button type="button" (click)="addMovieByGencode()">Gencode</button>
+
     </form>
   </div>

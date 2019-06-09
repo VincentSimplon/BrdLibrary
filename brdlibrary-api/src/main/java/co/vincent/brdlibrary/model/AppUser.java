@@ -22,7 +22,10 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "user")
 public class AppUser {
 
@@ -60,9 +63,9 @@ public class AppUser {
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private List<Role> roleList;
-    @ManyToMany
-	@JoinTable(name="user_movie", joinColumns= @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="movie_id"))
-    private List<Movie> movies;
+//    @ManyToMany
+//	@JoinTable(name="user_movie", joinColumns= @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="movie_id"))
+//    private List<Movie> movies;
     @OneToMany(mappedBy = "appUser")
 	private List<Library> libraries;
 
@@ -171,12 +174,12 @@ public class AppUser {
 	public void setRoleList(List<Role> roleList) {
 		this.roleList = roleList;
 	}
-	public List<Movie> getMovies() {
-		return movies;
-	}
-	public void setMovies(List<Movie> movies) {
-		this.movies = movies;
-	}
+//	public List<Movie> getMovies() {
+//		return movies;
+//	}
+//	public void setMovies(List<Movie> movies) {
+//		this.movies = movies;
+//	}
 	
 	
 	@Override
@@ -184,8 +187,7 @@ public class AppUser {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", passwordConfirm=" + passwordConfirm
 				+ ", profilePicture=" + profilePicture + ", addressLine1=" + addressLine1 + ", addressLine2="
 				+ addressLine2 + ", city=" + city + ", country=" + country + ", firstName=" + firstName + ", username="
-				+ username + ", lastName=" + lastName + ", zipCode=" + zipCode + ", roleList=" + roleList + ", movies="
-				+ movies + "]";
+				+ username + ", lastName=" + lastName + ", zipCode=" + zipCode + ", roleList=" + roleList  + "]";
 	}
 	
 	
@@ -193,7 +195,7 @@ public class AppUser {
 			@Length(min = 5, message = "*Your password must have at least 5 characters") @NotEmpty(message = "*Please provide your password") String password,
 			String profilePicture, String addressLine1, String addressLine2, String city, String country,
 			String firstName, @NotEmpty(message = "*Please provide your name") String username, String lastName,
-			String zipCode, List<Role> roleList, List<Movie> movies) {
+			String zipCode, List<Role> roleList) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -207,7 +209,7 @@ public class AppUser {
 		this.lastName = lastName;
 		this.zipCode = zipCode;
 		this.roleList = roleList;
-		this.movies = movies;
+		
 	}
 	public AppUser() {
 		super();
@@ -217,13 +219,13 @@ public class AppUser {
 			@Length(min = 5, message = "*Your password must have at least 5 characters") @NotEmpty(message = "*Please provide your password") String password,
 			@NotEmpty(message = "*Please provide your name") String username,
 			@NotEmpty(message = "*Please provide your last name") String lastName) {
-		this(email, password, username, lastName, null, null, null, null, null, null, null, null, null);
+		this(email, password, username, lastName, null, null, null, null, null, null, null, null);
 	}
 	public AppUser(
 			@Email(message = "*Please provide a valid Email") @NotEmpty(message = "*Please provide an email") String email,
 			@Length(min = 5, message = "*Your password must have at least 5 characters") @NotEmpty(message = "*Please provide your password") String password,
 			@NotEmpty(message = "*Please provide your name") String username, List<Role> roleList) {
-		this(email, password, username, null, null, null, null, null, null, null, null, roleList, null);
+		this(email, password, username, null, null, null, null, null, null, null, null, roleList);
 		
 	}
     

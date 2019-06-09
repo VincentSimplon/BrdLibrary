@@ -55,8 +55,7 @@ public class AppUserServiceImpl implements AppUserService {
             					 			 user.getUsername(), 
             					 			 user.getLastName(), 
             					 			 user.getZipCode(),
-            					 			 new ArrayList<>(Arrays.asList(Role.ROLE_USER)),
-            					 			 user.getMovies());
+            					 			 new ArrayList<>(Arrays.asList(Role.ROLE_USER)));
             					 			 
             appUserRepository.save(userToSave);
             
