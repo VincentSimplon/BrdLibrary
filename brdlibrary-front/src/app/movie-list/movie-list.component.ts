@@ -3,6 +3,7 @@ import { DataService } from '../service/data.service'
 import { Movie } from '../model/movie.model';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../model/user.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -12,10 +13,13 @@ import { User } from '../model/user.model';
 export class MovieListComponent implements OnInit {
 
   movieList: Movie[] = [];
+  librayId: number;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.librayId = this.route.snapshot.params.libraryId;
+    this.dataService.getMoviesByLibraryId(this.librayId);
     this.dataService.getAllMovies().subscribe(movies => this.movieList = movies);
   }
 

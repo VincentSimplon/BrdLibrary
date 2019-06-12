@@ -1,15 +1,28 @@
 
+<!-- <h2>Your Libraries</h2>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="{{library.name}}" *ngFor="let library of librariesList"></mat-tab>
+</mat-tab-group> -->
 <h2>Your Libraries</h2>
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let library of librariesList">
-    <td routerLink="/library-detail/{{library.libraryId}}">{{library.name}}</td>
-    
-  </tr>
-  </tbody>
-</table>
+<mat-tab-group dynamicHeight>
+  <mat-tab label="{{library.name}}" *ngFor="let library of librariesList">
+    <div class="example-large-box mat-elevation-z4">
+      <a routerLink="/movie-list/{{library.libraryId}}">{{library.movies.length}} Movies</a>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+
+<!-- <mat-tab-group dynamicHeight>
+  <mat-tab label="Short tab">
+    <div class="example-small-box mat-elevation-z4">
+      Small content
+    </div>
+  </mat-tab>
+  <mat-tab label="Long tab">
+    <div class="example-large-box mat-elevation-z4">
+      Large content
+    </div>
+  </mat-tab>
+</mat-tab-group> -->
+

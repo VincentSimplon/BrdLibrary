@@ -23,7 +23,8 @@
     </mat-drawer>
     <mat-drawer-content>
       <div class=home routerLink="">BRD<br>LIBRARY</div>
-      <img src="./assets/burgerButton.png"(click)="sideNav.toggle()" *ngIf="isUser || isAdmin" class="burger-button">
+      <img src="./assets/burgerButton.png"(click)="sideNav.toggle()" class="burger-button">
+      <div *ngIf="!(isUser || isAdmin)">
       <button 
         type="submit"
         routerLink="add-user">Signup</button>
@@ -31,6 +32,7 @@
         
         type="button"
         routerLink="login">LogIn</button>
+    </div>
         <!-- <button *ngIf="isUser || isAdmin"
         type="button"
         routerLink="movie-list">Movie List</button> -->

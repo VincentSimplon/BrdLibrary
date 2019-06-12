@@ -32,12 +32,13 @@ export class AddMovieComponent implements OnInit {
 
   ngOnInit() {
     
+    
     this.libraryId = this.route.snapshot.params.libraryId;
     this.libraryService.findLibrary(this.libraryId).subscribe(library => this.library = library);
     console.log("ID NGON : " + this.libraryId)
 
     this.newMovie = new Movie("", "", "", "", "", "", "", "", "", this.library);
-    this.newMovieByGencode = new Movie(null, null, null, null, null, null, null, null, "", this.library);
+    this.newMovieByGencode = new Movie("", "", "", "", "", "", "", "", this.gencode, this.library);
   }
 
   addMovie() {
@@ -46,9 +47,9 @@ export class AddMovieComponent implements OnInit {
 
   }
 
-  addMovieByGencode() {
-    this.dataService.addMovieByGencode(this.gencode, this.libraryId);
-    console.log("GENCODE : " + this.newMovie.gencode)
+  addMovieByGencode(gencodeTest: string) {
+    this.dataService.addMovieByGencode(gencodeTest, this.libraryId)
+    console.log("GENCODE : " + this.newMovieByGencode.gencode)
   }
 
 }

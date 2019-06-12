@@ -43,6 +43,11 @@ public class MovieServiceImpl implements MovieService {
         return movieRepository.findAll();
     }
 	
+	@Override
+	public List<Movie> findMoviesByLibraryId(long libraryId) {
+		return movieRepository.findMoviesByLibraryId(libraryId);
+	}
+	
 	
 	@Override
     public Movie addMovie(Movie newMovie, long libraryId) {
@@ -97,7 +102,7 @@ public class MovieServiceImpl implements MovieService {
 		NodeList years = racine.getElementsByTagName("annee");
 		
 
-		System.out.println("Vincent : repère");
+		System.out.println("Vincent : repère " + gencode);
 		
 		Element cover2 = (Element) covers.item(0);
 		Element editor2 = (Element) editors.item(0);

@@ -22,8 +22,10 @@ export class LibrariesListComponent implements OnInit {
   constructor(private libraryService: LibraryService, private loginService: LoginService, private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    this.libraryService.getOneLibrary(this.loginService.getUsername()).subscribe(libraries => this.librariesList = libraries);
-
+    this.libraryService.getOneLibrary(this.loginService.getUsername()).subscribe(libraries => {
+      this.librariesList = libraries;
+      
+    })
 }
 
   

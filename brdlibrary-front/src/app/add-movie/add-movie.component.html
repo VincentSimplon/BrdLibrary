@@ -26,10 +26,10 @@
         <button type="button" (click)="addMovie()">Submit</button>
 
         <div>
-            <input type="text" class="form-control" id="gencode" [(ngModel)]="gencode" name="gencode" required>
+            <input type="text" class="form-control" id="gencode" [(ngModel)]="newMovieByGencode.gencode" name="gencode" required>
             <label for="gencode">gencode<br></label>
         </div>
-        <button type="button" (click)="addMovieByGencode()">Gencode</button>
+        <button type="button" (click)="addMovieByGencode(newMovieByGencode.gencode)">Gencode</button>
 
     </form>
   </div>

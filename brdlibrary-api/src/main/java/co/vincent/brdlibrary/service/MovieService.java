@@ -18,6 +18,8 @@ public interface MovieService {
 	
 	List<Movie> findAllMovies();
 	
+	List<Movie> findMoviesByLibraryId(long libraryId);
+	
 	Movie addMovie(Movie newMovie, long libraryId);
 	
 	Movie addMovieByGencode(String gencode, long libraryId) throws IOException, ParserConfigurationException, SAXException, TransformerException;

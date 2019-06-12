@@ -23,6 +23,10 @@ export class DataService {
         return this.httpClient.get<Movie[]>(environment.apiUrl + 'movies');
     }
 
+    getMoviesByLibraryId(libraryId: number): Observable<Movie[]> {
+        return this.httpClient.get<Movie[]>(environment.apiUrl + 'movies/' + libraryId);
+    }
+
     addMovie(newMovie: Movie, libraryId: number) {
         this.httpClient.post<Movie>(environment.apiUrl + 'addMovie/' + libraryId, newMovie).subscribe(newMovie => {
             this.moviesList.push(newMovie);
@@ -31,8 +35,10 @@ export class DataService {
     }
 
     addMovieByGencode(gencode: String, libraryId: number) {
-        this.httpClient.post<Movie>(environment.apiUrl + 'addMovieByGencode/' + libraryId, gencode).subscribe(newMovie => {
+        this.httpClient.post<Movie>(environment.apiUrl + 'addmoviebygencode/' + libraryId + '/' + gencode, null).subscribe(newMovie => {
             this.moviesList.push(newMovie);
+            console.log("TU VAS JUSQUE LA : ")
+            console.log(newMovie)
             
         })
     }

@@ -37,6 +37,11 @@ public class MovieController {
         return movieService.findAllMovies();
     }
 	
+	@GetMapping("/movies/{libraryId}")
+	public List<Movie> getMoviesByLibrary(@PathVariable long libraryId) {
+		return movieService.findMoviesByLibraryId(libraryId);
+	}
+	
 	@PostMapping("/addMovie/{libraryId}")
 	public Movie addMovie(@RequestBody Movie newMovie, @PathVariable long libraryId) {
 		return movieService.addMovie(newMovie, libraryId);
@@ -48,8 +53,8 @@ public class MovieController {
 //		
 //	}
 	
-	@PostMapping("/addMovieByGencode/{libraryId}")
-	public Movie addMovieByGencode(String gencode, @PathVariable long libraryId) throws IOException, ParserConfigurationException, SAXException, TransformerException {
+	@PostMapping("/addmoviebygencode/{libraryId}/{gencode}")
+	public Movie addMovieByGencode(@PathVariable String gencode, @PathVariable long libraryId) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 		return movieService.addMovieByGencode(gencode, libraryId);
 	}
 	

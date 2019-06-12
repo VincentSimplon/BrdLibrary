@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AddUserComponent implements OnInit {
 
+  
+
   newUser: User;
   
   constructor(private userService: UserService,

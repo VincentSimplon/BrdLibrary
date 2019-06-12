@@ -14,7 +14,7 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
 import { LibraryDetailComponent } from './library-detail/library-detail.component'
 
 const routes: Routes = [
-  { path: 'movie-list', component: MovieListComponent },
+  { path: 'movie-list/:libraryId', component: MovieListComponent },
   { path: 'add-user', component: AddUserComponent },
   { path: 'user-list', component: UserListComponent },
   { path: '', component: HomeComponent },
