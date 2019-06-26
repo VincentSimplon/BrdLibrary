@@ -117,3 +117,7 @@ li a:hover {
   
   
 }
+
+main {
+  display: inline;
+}

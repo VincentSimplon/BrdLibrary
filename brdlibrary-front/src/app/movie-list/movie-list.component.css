@@ -1,9 +1,17 @@
-.example-card {
-    max-width: 400px;
+table {
+    width: 100%;
   }
+
+  img {
+      height: 100px;
+      width: auto;
+  }
+
   
-  .cover {
-      width: 150px;
-      height: 150px;
+
+  tbody {
+      background-color: #424242;
+      color: white;
   }
+
   

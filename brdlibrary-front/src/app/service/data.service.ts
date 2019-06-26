@@ -37,12 +37,10 @@ export class DataService {
     addMovieByGencode(gencode: String, libraryId: number) {
         this.httpClient.post<Movie>(environment.apiUrl + 'addmoviebygencode/' + libraryId + '/' + gencode, null).subscribe(newMovie => {
             this.moviesList.push(newMovie);
-            console.log("TU VAS JUSQUE LA : ")
-            console.log(newMovie)
+            
             
         })
     }
 }
     
-    
-   
+
